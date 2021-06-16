@@ -1,2 +1,3 @@
 # RestaurantReviewApp
-App to Review Restaurant
+Add Restaurant
+Add Review
