@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CuisineEntity" representedClassName="CuisineEntity" syncable="YES">
+        <attribute name="cuisineId" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+    </entity>
+    <entity name="RestaurantEntity" representedClassName="RestaurantEntity" syncable="YES">
+        <attribute name="name" attributeType="String"/>
+        <attribute name="restaurantId" attributeType="String"/>
+        <relationship name="cuisineType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CuisineEntity"/>
+        <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ReviewEntity"/>
+    </entity>
+    <entity name="ReviewEntity" representedClassName="ReviewEntity" syncable="YES">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="notes" attributeType="String"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="5" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="ReviewEntity" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="RestaurantEntity" positionX="-54" positionY="-9" width="128" height="89"/>
+        <element name="CuisineEntity" positionX="-36" positionY="9" width="128" height="59"/>
+    </elements>
+</model>
