@@ -41,6 +41,11 @@
 		F9D7C2AF267A73C600A64459 /* ReviewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D7C2AE267A73C600A64459 /* ReviewsViewModel.swift */; };
 		F9D7C2B4267A75E100A64459 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D7C2B3267A75E100A64459 /* ReviewCell.swift */; };
 		F9D7C2BA267B169F00A64459 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D7C2B9267B169F00A64459 /* Enums.swift */; };
+		F9D7C2C3267B508300A64459 /* CoreDataManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D7C2C2267B508300A64459 /* CoreDataManagerTest.swift */; };
+		F9D7C2CA267B535600A64459 /* RestaurantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D7C2C9267B535600A64459 /* RestaurantService.swift */; };
+		F9D7C2CF267B61B700A64459 /* CuisineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D7C2CE267B61B700A64459 /* CuisineService.swift */; };
+		F9D7C2D4267B659C00A64459 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D7C2D3267B659C00A64459 /* CoreDataService.swift */; };
+		F9D7C2E1267B699A00A64459 /* RestaurantTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D7C2E0267B699A00A64459 /* RestaurantTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +111,11 @@
 		F9D7C2AE267A73C600A64459 /* ReviewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewModel.swift; sourceTree = "<group>"; };
 		F9D7C2B3267A75E100A64459 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		F9D7C2B9267B169F00A64459 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		F9D7C2C2267B508300A64459 /* CoreDataManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerTest.swift; sourceTree = "<group>"; };
+		F9D7C2C9267B535600A64459 /* RestaurantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantService.swift; sourceTree = "<group>"; };
+		F9D7C2CE267B61B700A64459 /* CuisineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineService.swift; sourceTree = "<group>"; };
+		F9D7C2D3267B659C00A64459 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		F9D7C2E0267B699A00A64459 /* RestaurantTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTest.swift; sourceTree = "<group>"; };
 		FE13A3970283F0F54499DD17 /* Pods-RestaurantReviewApp-RestaurantReviewAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestaurantReviewApp-RestaurantReviewAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-RestaurantReviewApp-RestaurantReviewAppUITests/Pods-RestaurantReviewApp-RestaurantReviewAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -201,7 +211,9 @@
 			isa = PBXGroup;
 			children = (
 				F99D737E267A5C5A00A38C5F /* RestaurantReviewAppTests.swift */,
+				F9D7C2C2267B508300A64459 /* CoreDataManagerTest.swift */,
 				F99D7380267A5C5A00A38C5F /* Info.plist */,
+				F9D7C2E0267B699A00A64459 /* RestaurantTest.swift */,
 			);
 			path = RestaurantReviewAppTests;
 			sourceTree = "<group>";
@@ -278,6 +290,9 @@
 			children = (
 				F9D7C266267A633500A64459 /* CoreDataManager.swift */,
 				F9D7C287267A69C400A64459 /* AppLaunchService.swift */,
+				F9D7C2C9267B535600A64459 /* RestaurantService.swift */,
+				F9D7C2CE267B61B700A64459 /* CuisineService.swift */,
+				F9D7C2D3267B659C00A64459 /* CoreDataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -572,16 +587,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9D7C2D4267B659C00A64459 /* CoreDataService.swift in Sources */,
 				F9D7C2A2267A6F0600A64459 /* AddRestaurantViewModel.swift in Sources */,
 				F9D7C29D267A6D7E00A64459 /* UIView.swift in Sources */,
 				F9D7C2BA267B169F00A64459 /* Enums.swift in Sources */,
 				F9D7C288267A69C400A64459 /* AppLaunchService.swift in Sources */,
+				F9D7C2CF267B61B700A64459 /* CuisineService.swift in Sources */,
 				F9D7C247267A617D00A64459 /* ReviewEntity+CoreDataProperties.swift in Sources */,
 				F9D7C223267A5F4700A64459 /* RestaurantReviewApp.xcdatamodeld in Sources */,
 				F9D7C248267A617D00A64459 /* RestaurantEntity+CoreDataClass.swift in Sources */,
 				F9D7C2AA267A73B800A64459 /* AddReviewViewModel.swift in Sources */,
 				F9D7C275267A663100A64459 /* HomeViewModel.swift in Sources */,
 				F9D7C25F267A621300A64459 /* ReviewsViewController.swift in Sources */,
+				F9D7C2CA267B535600A64459 /* RestaurantService.swift in Sources */,
 				F9D7C26D267A63E000A64459 /* HomeCell.swift in Sources */,
 				F9D7C246267A617D00A64459 /* ReviewEntity+CoreDataClass.swift in Sources */,
 				F9D7C28D267A6A2100A64459 /* CuisineTypeModel.swift in Sources */,
@@ -604,7 +622,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9D7C2C3267B508300A64459 /* CoreDataManagerTest.swift in Sources */,
 				F99D737F267A5C5A00A38C5F /* RestaurantReviewAppTests.swift in Sources */,
+				F9D7C2E1267B699A00A64459 /* RestaurantTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,7 +27,7 @@ class AddReviewViewModel {
   }
   
   func addReviewForRestaurant() {
-    let context = CoreDataManager.shared.getViewContext()
+    let context = CoreDataManager.shared.mainContext
     do {
       let results = try context.fetch(RestaurantEntity.fetchRequest(restaurantId: restaurantId))
       if results.count > 0 {

@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 
-final class CoreDataManager: NSObject {
+open class CoreDataManager: NSObject, CoreDataStack {
   static let shared = CoreDataManager()
   
   private override init() { }
@@ -41,13 +41,13 @@ final class CoreDataManager: NSObject {
       return container
   }()
 
-  func getViewContext() -> NSManagedObjectContext {
+  public var mainContext: NSManagedObjectContext {
     return persistentContainer.viewContext
   }
   
   // MARK: - Core Data Saving support
 
-  func saveContext () {
+  public func saveContext () {
       let context = persistentContainer.viewContext
       if context.hasChanges {
           do {

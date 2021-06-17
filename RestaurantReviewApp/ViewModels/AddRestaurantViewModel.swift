@@ -14,6 +14,11 @@ class AddRestaurantViewModel {
   
   private var restaurantTypeList: [CuisineEntity] = []
   
+  private let service = RestaurantService(
+    managedObjectContext: CoreDataManager.shared.mainContext,
+    coreDataStack: CoreDataManager.shared
+  )
+  
   func setRestaurantName(_ name: String) {
     self.name = name
   }
@@ -36,7 +41,7 @@ class AddRestaurantViewModel {
         return restaurantTypeList
     }
     
-    let context = CoreDataManager.shared.getViewContext()
+    let context = CoreDataManager.shared.mainContext
     do {
       let result = try context.fetch(CuisineEntity.fetchRequest())
       for data in result as! [CuisineEntity] {
@@ -60,40 +65,26 @@ class AddRestaurantViewModel {
   }
   
   func save() {
-    let context = CoreDataManager.shared.getViewContext()
-    if let entity = NSEntityDescription.entity(forEntityName: "RestaurantEntity", in: context) {
-      let restaurantObject = NSManagedObject(entity: entity, insertInto: context)
-      let uuidString = UUID().uuidString
-      restaurantObject.setValue(uuidString, forKey: "restaurantId")
-      restaurantObject.setValue(name, forKey: "name")
-      restaurantObject.setValue(type, forKey: "cuisineType")
-      CoreDataManager.shared.saveContext()
-    }    
+    if let restaurantName = name,
+       let restaurantType = type {
+      service.add(name: restaurantName, type: restaurantType)
+    }
   }
   
   func editRestaurant(_ restaurantId: String) {
-    if let restaurantEntity = getRestaurantEntity(restaurantId) {
-      restaurantEntity.setValue(name, forKey: "name")
-      restaurantEntity.setValue(type, forKey: "cuisineType")
-      CoreDataManager.shared.saveContext()
+    if let restaurantName = name,
+       let restaurantType = type {
+      service.edit(
+        name: restaurantName,
+        type: restaurantType,
+        restaurantId: restaurantId
+      )
     }
   }
   
-  func getRestaurantEntity(_ restaurantId: String) -> RestaurantEntity? {
-    let context = CoreDataManager.shared.getViewContext()
-    do {
-      let results = try context.fetch(RestaurantEntity.fetchRequest(restaurantId: restaurantId))
-      if results.count > 0 {
-        return results[0]
-      }
-    } catch {
-      print(error)
-    }
-    return nil
-  }
   
   func updateData(_ restaurantId: String) {
-    if let restaurantEntity = getRestaurantEntity(restaurantId) {
+    if let restaurantEntity = service.getRestaurantEntity(restaurantId) {
       self.name = restaurantEntity.name
       self.type = restaurantEntity.cuisineType
     }

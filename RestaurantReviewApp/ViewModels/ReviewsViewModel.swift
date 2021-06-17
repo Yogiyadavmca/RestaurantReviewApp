@@ -24,7 +24,7 @@ class ReviewsViewModel {
   func refreshList() {
     reviewsList.removeAll()
     
-    let context = CoreDataManager.shared.getViewContext()
+    let context = CoreDataManager.shared.mainContext
     do {
       let result = try context.fetch(RestaurantEntity.fetchRequest(restaurantId: restaurantId))
       if result.count > 0 {

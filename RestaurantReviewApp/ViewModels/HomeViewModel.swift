@@ -12,6 +12,10 @@ class HomeViewModel {
   
   private var restaurantList: [RestaurantEntity] = []
   private var sortBy = SortBy.avgRating
+  private let restaurantService = RestaurantService(
+    managedObjectContext: CoreDataManager.shared.mainContext,
+    coreDataStack: CoreDataManager.shared
+  )
   
   func numberOfRows() -> Int {
     return restaurantList.count
@@ -23,26 +27,10 @@ class HomeViewModel {
   
   func refreshList() {
     restaurantList.removeAll()
-    let context = CoreDataManager.shared.getViewContext()
-    let fetchRequest: NSFetchRequest<RestaurantEntity> = RestaurantEntity.fetchRequest()
-    do {
-      var result = try context.fetch(fetchRequest)
-      switch sortBy {
-      case .name:
-        result.sort { (a, b) -> Bool in
-          if let name1 = a.name, let name2 = b.name {
-            return name1.localizedCaseInsensitiveCompare(name2) == .orderedAscending
-          }
-          return true
-        }
-      case .avgRating:
-        result.sort(by: {$0.avgRating > $1.avgRating})
-      }
-      for data in result {
-        restaurantList.append(data)
-      }
-    } catch {
-      print(error)
+    
+    let results = restaurantService.getAllRestaurants(sortedBy: sortBy)
+    for data in results {
+      restaurantList.append(data)
     }
   }
   
@@ -57,17 +45,6 @@ class HomeViewModel {
   }
   
   func deleteRestaurant(restaurantId: String) {
-    let context = CoreDataManager.shared.getViewContext()
-    let fetchRequest: NSFetchRequest<RestaurantEntity> = RestaurantEntity.fetchRequest(restaurantId: restaurantId)
-    do {
-      let results = try context.fetch(fetchRequest)
-      if results.count > 0 {
-        let restaurantEntity = results[0]
-        context.delete(restaurantEntity)
-        try context.save()
-      }
-    } catch {
-      print(error)
-    }
+    restaurantService.delete(restaurantId: restaurantId)
   }
 }
